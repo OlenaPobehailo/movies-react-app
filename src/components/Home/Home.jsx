@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { basePosterUrl, getTrendingMovies } from '../../services/api';
-import MoviesList from '../MoviesList/MoviesList';
-import css from './Home.module.css';
+import HomePage from '../../pages/HomePage';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -19,16 +18,9 @@ const Home = () => {
   }, []);
 
   console.log(trendingMovies);
-
   console.log(basePosterUrl);
-  //console.log(basePosterUrl+trendingMovies[0].poster_path);
 
-  return (
-    <div className={css.container}>
-      <h1 className={css.pageTitle}>Trending today</h1>
-      <MoviesList movies={trendingMovies} location={location} />
-    </div>
-  );
+  return <HomePage movies={trendingMovies} location={location} />;
 };
 
 export default Home;

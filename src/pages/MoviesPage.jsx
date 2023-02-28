@@ -1,7 +1,7 @@
 import css from './MoviesPage.module.css';
 
 import React from 'react';
-import MoviesList from '../MoviesList/MoviesList';
+import MoviesList from '../components/MoviesList/MoviesList';
 
 const MoviesPage = ({ movies, location, search, handleFormSubmit, handleInputChange }) => {
   return (

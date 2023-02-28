@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from '../../services/api';
-import MoviesPage from './MoviesPage';
+import MoviesPage from '../../pages/MoviesPage';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
