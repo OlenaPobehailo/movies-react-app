@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+}
+
+.info {
+  padding: 1.5rem;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.backLink {
+  composes: link;
+  padding: 1.2rem;
+}
