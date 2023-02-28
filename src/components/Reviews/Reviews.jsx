@@ -31,7 +31,7 @@ const Reviews = () => {
       {movie &&
         movie.results.map(review => (
           <li className={css.item} key={review.id}>
-            <p className={css.author}>{`Name: ${review.author}`}</p>
+            <p className={css.author}>{`Author: ${review.author}`}</p>
             <p className={css.content}>{review.content}</p>
           </li>
         ))}
