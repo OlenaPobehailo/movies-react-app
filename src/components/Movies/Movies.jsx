@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { basePosterUrl, getMoviesByQuery } from '../../services/api';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { getMoviesByQuery } from '../../services/api';
 import MoviesList from '../MoviesList/MoviesList';
 import css from './Movies.module.css';
 
