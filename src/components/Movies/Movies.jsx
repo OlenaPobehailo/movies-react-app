@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { getMoviesByQuery } from '../services/api';
+import { basePosterUrl, getMoviesByQuery } from '../../services/api';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -36,23 +37,27 @@ const Movies = () => {
     fetchMovies();
   }, [searchQuery]);
 
-  console.log('search', search);
-  console.log('searchQuery', searchQuery);
+  // console.log('search', search);
+  // console.log('searchQuery', searchQuery);
   console.log('searchMovies', searchMovies);
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <input type="text" value={search} onChange={handleInputChange} />
-        <button type="submit">Search</button>
+      <form className={css.form} onSubmit={handleFormSubmit}>
+        <input className={css.input} type="text" value={search} onChange={handleInputChange} />
+        <button className={css.button} type="submit">
+          Search
+        </button>
       </form>
-      <h2>Movies</h2>
 
-      <ul>
+      <ul className={css.list}>
         {searchMovies.map(movie => (
-          <li key={movie.id}>
+          <li className={css.item} key={movie.id}>
             <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title}
+            <img className={css.img} src={basePosterUrl+movie.poster_path} alt="" />
+              <div className={css.info}>
+                <p className={css.title}>{movie.title}</p>
+              </div>
             </Link>
           </li>
         ))}
