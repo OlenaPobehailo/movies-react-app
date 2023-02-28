@@ -18,8 +18,6 @@ const Home = () => {
   }, []);
 
   console.log(trendingMovies);
-  console.log(trendingMovies[0]);
-  //console.log(trendingMovies[0].poster_path);
 
   console.log(basePosterUrl);
   //console.log(basePosterUrl+trendingMovies[0].poster_path);

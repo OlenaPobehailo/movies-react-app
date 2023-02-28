@@ -9,6 +9,7 @@
 .title {
   margin-bottom: 2.5rem;
   font-size: 2.5rem;
+  
 }
 
 .subtitle {
@@ -23,9 +24,10 @@
 
 .link {
   display: block;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
   font-size: 1.8rem;
+  color: #896e69;
 }
 
 .backLink {

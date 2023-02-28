@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { basePosterUrl, getMovieById } from '../../services/api';
 import calculateUserScore from '../../utils/calculateUserScore';
 import css from './MovieDetail.module.css';
@@ -7,13 +7,13 @@ import css from './MovieDetail.module.css';
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [showCast, setShowCast] = useState(false);
-  const [showRewiews, setShowReviews] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
   const location = useLocation();
   const { id } = useParams();
 
   const backLinkRef = location.state?.from ?? '/movies';
 
-  console.log(backLinkRef);
+  // console.log(backLinkRef);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -40,6 +40,15 @@ const MovieDetails = () => {
   // console.log(genres[0].name);
   // console.log(genreList);
 
+  const handleCastClick = () => {
+    setShowCast(prev => !prev);
+    setShowReviews(false);
+  };
+  const handleReviewsClick = () => {
+    setShowReviews(prev => !prev);
+    setShowCast(false);
+  };
+
   return (
     <>
       <Link to={backLinkRef} className={css.backLink}>
@@ -47,7 +56,7 @@ const MovieDetails = () => {
       </Link>
 
       <div className={css.container}>
-        <img src={posterPath} alt={title} />
+        <img className={css.poster} src={posterPath} alt={title} />
 
         <div className={css.info}>
           <h2 className={css.title}>
@@ -61,8 +70,25 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className={css.additionalInfo}>
-        <Link className={css.link}>Cast</Link>
-        <Link className={css.link}>Reviews</Link>
+        <Link
+          className={css.link}
+          to={`/movies/${id}/cast`}
+          onClick={handleCastClick}
+          state={{ from: location.state?.from }}
+        >
+          Cast
+        </Link>
+        <Link
+          className={css.link}
+          to={`/movies/${id}/reviews`}
+          onClick={handleReviewsClick}
+          state={{ from: location.state?.from }}
+        >
+          Reviews
+        </Link>
+
+        {showCast && <Outlet />}
+        {showReviews && <Outlet />}
       </div>
     </>
   );
