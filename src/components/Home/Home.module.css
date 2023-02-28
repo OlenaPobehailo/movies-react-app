@@ -10,37 +10,3 @@
   margin: 30px;
   color: var(--color-primary);
 }
-.list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--padding-default);
-}
-
-.item {
-  border: 1px solid lightgray;
-  transition: scale 0.2s ease-in-out;
-}
-
-.item:focus,
-.item:hover {
-  transform: scale(1.02);
-}
-
-.img {
-  min-height: 270px;
-  width: 100%;
-  object-fit: contain;
-}
-
-.title {
-  line-height: 1.2;
-  padding: var(--padding-default);
-  margin-bottom: 4px;
-  font-size: 26px;
-  color: #896e69;
-  color: var(--color-primary);
-  text-align: center;
-}

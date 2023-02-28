@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { basePosterUrl, getTrendingMovies } from '../../services/api';
+import MoviesList from '../MoviesList/MoviesList';
 import css from './Home.module.css';
 
 const Home = () => {
@@ -25,19 +26,7 @@ const Home = () => {
   return (
     <div className={css.container}>
       <h1 className={css.pageTitle}>Trending today</h1>
-      <ul className={css.list}>
-        {trendingMovies.map(movie => (
-          <li className={css.item} key={movie.id}>
-            <Link className={css.link} to={`/movies/${movie.id}`} state={{ from: location }}>
-              <img className={css.img} src={basePosterUrl+movie.poster_path} alt="" />
-              <div className={css.info}>
-                <p className={css.title}>{movie.title}</p>
-              </div>
-              
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MoviesList movies={trendingMovies} location={location} />
     </div>
   );
 };

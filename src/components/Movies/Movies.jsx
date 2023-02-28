@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { basePosterUrl, getMoviesByQuery } from '../../services/api';
+import MoviesList from '../MoviesList/MoviesList';
 import css from './Movies.module.css';
 
 const Movies = () => {
@@ -49,19 +50,7 @@ const Movies = () => {
           Search
         </button>
       </form>
-
-      <ul className={css.list}>
-        {searchMovies.map(movie => (
-          <li className={css.item} key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            <img className={css.img} src={basePosterUrl+movie.poster_path} alt="" />
-              <div className={css.info}>
-                <p className={css.title}>{movie.title}</p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MoviesList movies={searchMovies} location={location} />
     </>
   );
 };
