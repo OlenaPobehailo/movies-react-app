@@ -3,6 +3,11 @@
 #f9f9ff  
 #896e69   */
 
+.container{
+  width: 1000px;
+  margin: 60px auto;
+}
+
 .nav {
   position: fixed;
   top: 0;
@@ -16,6 +21,7 @@
 .list {
   display: flex;
   align-items: center;
+  justify-content: start;
   height: 100%;
 }
 
