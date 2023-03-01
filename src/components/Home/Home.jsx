@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { basePosterUrl, getTrendingMovies } from '../../services/api';
 import HomePage from '../../pages/HomePage';
 // import css from './Home.module.css';
-import { ClipLoader } from 'react-spinners';
 import Loader from '../Loader/Loader';
 
 const Home = () => {
