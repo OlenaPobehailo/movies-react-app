@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import {  getMovieById } from '../../services/api';
+import { getMovieById } from '../../services/api';
 import MovieDetailPage from '../../pages/MovieDetailPage';
+import Loader from '../Loader/Loader';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -22,7 +23,7 @@ const MovieDetails = () => {
   }, [id]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   console.log(movie);

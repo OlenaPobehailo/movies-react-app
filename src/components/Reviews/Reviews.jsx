@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from '../../services/api';
+import Loader from '../Loader/Loader';
 import css from './Reviews.module.css';
 
 const Reviews = () => {
@@ -24,8 +25,10 @@ const Reviews = () => {
     fetchMovie();
   }, [id]);
 
+  if (!movie) {
+    return <Loader/>;
+  }
   console.log(movie);
-
   return (
     <ul className={css.list}>
       {movie &&

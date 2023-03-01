@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from '../../services/api';
 import MoviesPage from '../../pages/MoviesPage';
+import Loader from '../Loader/Loader';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams({
@@ -32,6 +34,7 @@ const Movies = () => {
     const fetchMovies = async () => {
       const data = await getMoviesByQuery(searchQuery);
       setSearchMovies(data);
+      setIsLoading(false);
     };
 
     fetchMovies();
@@ -42,13 +45,18 @@ const Movies = () => {
   console.log('searchMovies', searchMovies);
 
   return (
-    <MoviesPage
-      movies={searchMovies}
-      location={location}
-      search={search}
-      handleFormSubmit={handleFormSubmit}
-      handleInputChange={handleInputChange}
-    />
+    <>
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <MoviesPage
+          movies={searchMovies}
+          location={location}
+          search={search}
+          handleFormSubmit={handleFormSubmit}
+          handleInputChange={handleInputChange}
+        />
+      )}
+    </>
   );
 };
 

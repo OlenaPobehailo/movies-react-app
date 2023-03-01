@@ -4,6 +4,7 @@ import { FaUser } from 'react-icons/fa';
 
 import { basePosterUrl, getCast } from '../../services/api';
 import css from './Cast.module.css';
+import Loader from '../Loader/Loader';
 
 const Cast = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const Cast = () => {
   }, [id]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
   console.log(movie);
 
