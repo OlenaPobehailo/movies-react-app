@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import css from './SharedLayout.module.css';
 
@@ -8,14 +8,20 @@ const SharedLayout = () => {
       <nav className={css.nav}>
         <ul className={css.list}>
           <li>
-            <Link to="/" className={css.link}>Home</Link>
+            <Link to="/" className={css.link}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/movies"  className={css.link}>Movies</Link>
+            <Link to="/movies" className={css.link}>
+              Movies
+            </Link>
           </li>
         </ul>
       </nav>
-      <Outlet />
+      <Suspense >
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
