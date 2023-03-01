@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.poster{
+  width: 400px;
+  height: auto;
+}
+
 .info {
   padding: 1.5rem;
 }
